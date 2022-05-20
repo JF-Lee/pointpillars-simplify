@@ -263,7 +263,7 @@ def nms_cpu(boxes, scores, thresh, pre_maxsize=None, **kwargs):
 
     # 此前已排序，此处无变化
     boxes = boxes[order].contiguous()
-    keep = torch.LongTensor(boxes.size(0))  # 构造一个boxes.size维度的向量  init elem default=0
+    keep = torch.zeros((boxes.shape[0])).type(torch.LongTensor)
     # keep：记录保留目标框的下标
     # num_out：返回保留下来的个数
     print('num of box:', boxes.size(0))
